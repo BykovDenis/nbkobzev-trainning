@@ -19,7 +19,7 @@ export default class Myinpunts extends Component {
         return (
             <div className = {this.props.divclassName}>
                 <label for={this.props.id} placeholder = {this.props.placeholder} className = {this.props.lableclassName}>{this.props.lable}</label>
-                <input id={this.props.id} type="text"  placeholder={this.props.placeholder} required className = {this.props.inputclassName} value={this.state.value} onChange={this.inputNumberValidate} />
+                <input id={this.props.id} type="text"  placeholder={this.props.placeholder} required className = {this.props.inputclassName} value={this.props.value} onChange={this.props.onChange} />
             </div>
         );
     }
