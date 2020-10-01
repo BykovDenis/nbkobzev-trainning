@@ -1,13 +1,14 @@
 import React from "react";
+import style from './index.module.css';
 
 
-export default function Myinpunts(props) {
+export default function Myinpunt(props) {
 
 
     return (
-        <div className={props.divclassName}>
-            <label for={props.id} placeholder={props.placeholder} className={props.lableclassName}>{props.lable}</label>
-            <input id={props.id} type="text" placeholder={props.placeholder} required className={props.inputclassName} value={props.value} onChange={props.onChange} />
+        <div className={style.item}>
+            <label for={props.id} placeholder={props.placeholder} className={style.label}>{props.lable}</label>
+            <input id={props.id} type="text" placeholder={props.placeholder} required className={style.input} value={props.value} onChange={props.onChange} />
         </div>
     );
 }
