@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import { number } from 'prop-types';
+import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import List from "./components/list";
-import Myinpunt from './components/my-input/index';
+import List from './components/list';
+import MyInput from './components/my-input/index';
 
 class App extends Component {
   constructor(props) {
@@ -21,29 +22,31 @@ class App extends Component {
 
   inputNumberValidate(event) {
     const REGEXP = /[0-9]/g;
-    const inputValue = event.target.value;
-    const validCharsArray = inputValue.match(REGEXP) || [];
-    switch(event.target.id){
+    const inputValueText = event.target.value;
+    const validCharsArray = inputValueText.match(REGEXP) || [];
+    const inputValueNumber = parseInt(validCharsArray.join(''), 10);
+    const inputValue = (isNaN(inputValueNumber) === false) ? inputValueNumber : "";
+    switch (event.target.id) {
       case "input1":
-        this.setState({ value1: parseInt(validCharsArray.join(""),10) });
+        this.setState({ value1: inputValue });
         break;
       case "input2":
-        this.setState({ value2: parseInt(validCharsArray.join(""),10) });
+        this.setState({ value2: inputValue });
         break;
       case "input3":
-        this.setState({ value3: parseInt(validCharsArray.join(""),10) });
-        break; 
+        this.setState({ value3: inputValue });
+        break;
+      default:
+        break;
     }
-   }
+  }
 
   sumInputs() {
     const totalvalue = this.state.value1 + this.state.value2 + this.state.value3;
-    const {arraySum} = this.state;
-    if (isNaN(totalvalue) === false) {
-      this.setState({
-        arraySum: arraySum.concat(totalvalue)
-      });
-    }
+    const { arraySum } = this.state;
+    this.setState({
+      arraySum: [...arraySum, totalvalue]
+    });
   }
 
   render() {
@@ -51,13 +54,13 @@ class App extends Component {
       <div id="myroot">
         <div className="myroot__inputblock">
           <div className="myroot__items">
-            <Myinpunt onChange={this.inputNumberValidate} value={this.state.value1} id="input1" placeholder="input 1" lable="label 1" />
-            <Myinpunt onChange={this.inputNumberValidate} value={this.state.value2} id="input2" placeholder="input 2" lable="label 2" />
-            <Myinpunt onChange={this.inputNumberValidate} value={this.state.value3} id="input3" placeholder="input 3" lable="label 3" />
+            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value1} id="input1" placeholder="input 1" label="label 1" />
+            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value2} id="input2" placeholder="input 2" label="label 2" />
+            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value3} id="input3" placeholder="input 3" label="label 3" />
           </div>
           <button type="button" value="Send" id="btn1" className="btn" onClick={this.sumInputs}  >Send</button>
         </div>
-        <List arraySum={this.state.arraySum}/>
+        <List arraySum={this.state.arraySum} />
       </div>
     );
   }
