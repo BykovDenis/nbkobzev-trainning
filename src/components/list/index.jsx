@@ -7,14 +7,12 @@ export default function List(props) {
         <div >
           <p>Result sum: </p>
           <ul className="ul">
-            {props.arraySum.map( (input, index) => {
-              return (<li key={index}>{input}</li>);
-            })}
+            {props.arraySum.map( (input, index) => <li key={index}>{input}</li>)}
           </ul>
         </div>
     );
 }
 
 List.propTypes = {
-  arraySum: PropTypes.array
+  arraySum: PropTypes.arrayOf(PropTypes.number).isRequired
 }

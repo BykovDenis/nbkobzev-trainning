@@ -12,9 +12,15 @@ export default function MyInput(props) {
 }
 
 MyInput.propTypes = {
-    id: PropTypes.string,
-    placeholder: PropTypes.string,
-    label: PropTypes.string,
-    value: PropTypes.number,
-    onInputChange: PropTypes.func
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ]).isRequired,
+    onInputChange: PropTypes.func.isRequired
+}
+
+MyInput.defaultProps = {    
+    placeholder: PropTypes.string
 }

@@ -1,6 +1,4 @@
-import { number } from 'prop-types';
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import List from './components/list';
 import MyInput from './components/my-input/index';
@@ -12,15 +10,15 @@ class App extends Component {
       value1: '',
       value2: '',
       value3: '',
-      totalvalue: '',
+      i: 0,
       arraySum: []
     };
 
-    this.inputNumberValidate = this.inputNumberValidate.bind(this);
-    this.sumInputs = this.sumInputs.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSumInputsClick = this.onSumInputsClick.bind(this);
   }
 
-  inputNumberValidate(event) {
+  onInputChange(event) {
     const REGEXP = /[0-9]/g;
     const inputValueText = event.target.value;
     const validCharsArray = inputValueText.match(REGEXP) || [];
@@ -41,11 +39,12 @@ class App extends Component {
     }
   }
 
-  sumInputs() {
-    const totalvalue = this.state.value1 + this.state.value2 + this.state.value3;
+  onSumInputsClick() {
+    const totalValue = this.state.value1 + this.state.value2 + this.state.value3 + this.state.i;
+    this.setState ({i: this.state.i + 1});
     const { arraySum } = this.state;
     this.setState({
-      arraySum: [...arraySum, totalvalue]
+      arraySum: [...arraySum, totalValue ]
     });
   }
 
@@ -54,11 +53,11 @@ class App extends Component {
       <div id="myroot">
         <div className="myroot__inputblock">
           <div className="myroot__items">
-            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value1} id="input1" placeholder="input 1" label="label 1" />
-            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value2} id="input2" placeholder="input 2" label="label 2" />
-            <MyInput onInputChange={this.inputNumberValidate} value={this.state.value3} id="input3" placeholder="input 3" label="label 3" />
+            <MyInput onInputChange={this.onInputChange} value={this.state.value1} id="input1" placeholder="input 1" label="label 1" />
+            <MyInput onInputChange={this.onInputChange} value={this.state.value2} id="input2" placeholder="input 2" label="label 2" />
+            <MyInput onInputChange={this.onInputChange} value={this.state.value3} id="input3" placeholder="input 3" label="label 3" />
           </div>
-          <button type="button" value="Send" id="btn1" className="btn" onClick={this.sumInputs}  >Send</button>
+          <button type="button" value="Send" id="btn1" className="btn" onClick={this.onSumInputsClick} >Send</button>
         </div>
         <List arraySum={this.state.arraySum} />
       </div>
