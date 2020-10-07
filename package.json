@@ -50,6 +50,7 @@
     }
   },
   "lint-staged": {
-    "*.js{x}": ["./node_modules/.bin/eslint", "git add"]
+    "*.js": ["./node_modules/.bin/eslint", "git add"],
+    "*.jsx": ["./node_modules/.bin/eslint", "git add"]
   }
 }
