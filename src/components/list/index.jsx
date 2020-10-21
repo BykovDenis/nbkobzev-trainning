@@ -1,18 +1,21 @@
 import React from 'react';
-import  './index.css';
+import './index.css';
 import PropTypes from 'prop-types';
 
-export default function List(props) {    
-    return (
-        <div >
-          <p>Result sum: </p>
-          <ul className="ul">
-            {props.arraySum.map( (input, index) => <li key={index}>{input}</li>)}
-          </ul>
-        </div>
-    );
+const List = (props) => {
+  let list = props.arraySum.map((input, index) => <li key={index}>{input}</li>);
+  return (
+    <div >
+      <p>Result sum: </p>
+      <ul className="ul">
+        {list}
+      </ul>
+    </div>
+  );
 }
 
 List.propTypes = {
   arraySum: PropTypes.arrayOf(PropTypes.number).isRequired
 }
+
+export default List;
