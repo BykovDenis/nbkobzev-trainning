@@ -1,0 +1,27 @@
+.myroot__inputblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 100, 0.5);
+  outline: 1px solid rgba(100, 255, 100, .5);
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.myroot__items {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 800px;
+  padding-left: 0;
+}
+
+.btn {
+  width: 75px;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
