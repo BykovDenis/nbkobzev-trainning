@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import MyInputs from '../components/my-inputs';
-import { addSumAC, addValueAC } from '../redux/reducers/Iinputs';
+import { addSumAC, addValueAC } from '../redux/actions';
 
 let mapStateToProps = (state) => {
   return {
@@ -11,15 +12,13 @@ let mapStateToProps = (state) => {
 };
 
 let mapDispatchToProps = (dispatch) => {
-  return {
-    onInputChange: (uinputId, numberValue) => {
-      dispatch(addValueAC(uinputId, numberValue));
-    },
-    addSum: () => {
-      dispatch(addSumAC());
-    },
+  const bindActions = {
+    addValueAC,
+    addSumAC,
   };
+  return bindActionCreators(bindActions, dispatch);
 };
+
 const myInputsContainer = connect(mapStateToProps, mapDispatchToProps)(MyInputs);
 
 export default myInputsContainer;

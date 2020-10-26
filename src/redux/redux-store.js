@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux';
 
-import inputsReducer from './reducers/Iinputs';
+import inputsReducer from './reducers/inputs';
 
 let reducers = combineReducers({
   data: inputsReducer,

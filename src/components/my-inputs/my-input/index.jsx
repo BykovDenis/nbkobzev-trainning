@@ -10,7 +10,7 @@ const MyInput = (props) => {
     const validCharsArray = inputValueText.match(REGEXP) || [];
     const inputValueNumber = parseInt(validCharsArray.join(''), 10);
     const inputValue = isNaN(inputValueNumber) === false ? inputValueNumber : '';
-    props.onInputChange(event.target.id, inputValue);
+    props.onInputChange({ uinputId: event.target.id, numberValue: inputValue });
   };
   return (
     <div className="item">

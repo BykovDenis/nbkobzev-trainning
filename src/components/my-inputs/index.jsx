@@ -9,12 +9,12 @@ const MyInputs = (props) => {
       placeholder={inputValue.placeholder}
       label={inputValue.label}
       value={inputValue.value}
-      onInputChange={props.onInputChange}
+      onInputChange={props.addValueAC}
       key={inputValue.id}
     />
   ));
   const onAddSumInputsClick = () => {
-    props.addSum();
+    props.addSumAC();
   };
   return (
     <div className="myroot__inputblock">

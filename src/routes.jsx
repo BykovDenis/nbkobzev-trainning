@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 
-import Navbar from './components/navbar';
+import App from './App';
 import MyListContainer from './containers/list';
 import MyInputsContainer from './containers/my-input';
 
@@ -9,12 +9,11 @@ const Routes = () => {
   const pathname = document.location.pathname;
   return (
     <BrowserRouter>
-      <div>
-        <Navbar />
+      <App>
         {pathname === '/' && <Redirect to="/inputs" />}
         <Route path="/inputs" component={MyInputsContainer} />
         <Route path="/list" component={MyListContainer} />
-      </div>
+      </App>
     </BrowserRouter>
   );
 };

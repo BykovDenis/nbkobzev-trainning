@@ -1,24 +1,18 @@
 import './App.css';
 
-import React from 'react';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
+import React, { Component } from 'react';
 
-import Navbar from './components/navbar';
-import MyListContainer from './containers/list';
-import MyInputsContainer from './containers/my-input';
+import Navbar from './components/navbar/index';
 
-const App = () => {
-  const pathname = document.location.pathname;
-  return (
-    <BrowserRouter>
+class App extends Component {
+  render() {
+    return (
       <div>
         <Navbar />
-        {pathname === '/' && <Redirect to="/inputs" />}
-        <Route path="/inputs" component={MyInputsContainer} />
-        <Route path="/list" component={MyListContainer} />
+        {this.props.children}
       </div>
-    </BrowserRouter>
-  );
-};
+    );
+  }
+}
 
 export default App;
