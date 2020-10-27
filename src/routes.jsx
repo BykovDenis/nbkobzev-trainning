@@ -6,11 +6,10 @@ import MyListContainer from './containers/list';
 import MyInputsContainer from './containers/my-input';
 
 const Routes = () => {
-  const pathname = document.location.pathname;
   return (
     <BrowserRouter>
       <App>
-        {pathname === '/' && <Redirect to="/inputs" />}
+        <Route exact path="/" component={MyInputsContainer} />
         <Route path="/inputs" component={MyInputsContainer} />
         <Route path="/list" component={MyListContainer} />
       </App>

@@ -1,35 +1,33 @@
 import handleActions from 'redux-actions/lib/handleActions';
 
-import { ADD_SUM, INPUT_VALUE } from '../constants';
+import { ADD_SUM, INPUT_1, INPUT_2, INPUT_3 } from '../constants';
 import initialState from '../data/inputs';
 
 export default handleActions(
   {
-    [INPUT_VALUE]: (state, action) => ({
+    [INPUT_1]: (state, action) => ({
       ...state,
-      activeButton: state.inputs
-        .map((input) => {
-          if (input.id === action.payload.uinputId) {
-            return action.payload.numberValue;
-          }
-          return input.value;
-        })
-        .includes(''),
-      inputs: state.inputs.map((input) => {
-        if (input.id === action.payload.uinputId) {
-          return { ...input, value: action.payload.numberValue };
-        }
-        return input;
-      }),
+      activeButton: action.payload.activeButton,
+      input_1: action.payload.inputValue,
     }),
-    [ADD_SUM]: (state) => ({
+    [INPUT_2]: (state, action) => ({
       ...state,
-      arraySum: [...state.arraySum, state.i + state.inputs.reduce((a, b) => a + b.value, 0)],
-      i: state.i + 1,
-      inputs: state.inputs.map((input) => {
-        return { ...input, value: '' };
-      }),
+      activeButton: action.payload.activeButton,
+      input_2: action.payload.inputValue,
+    }),
+    [INPUT_3]: (state, action) => ({
+      ...state,
+      activeButton: action.payload.activeButton,
+      input_3: action.payload.inputValue,
+    }),
+    [ADD_SUM]: (state, action) => ({
+      ...state,
+      arraySum: action.payload.arraySum,
       activeButton: true,
+      i: action.payload.i,
+      input_1: '',
+      input_2: '',
+      input_3: '',
     }),
   },
   initialState

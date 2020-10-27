@@ -3,14 +3,12 @@ import './index.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { charToNumber } from '../../../helpers/char-to-number';
+
 const MyInput = (props) => {
   const onInputValueChange = (event) => {
-    const REGEXP = /[0-9]/g;
-    const inputValueText = event.target.value;
-    const validCharsArray = inputValueText.match(REGEXP) || [];
-    const inputValueNumber = parseInt(validCharsArray.join(''), 10);
-    const inputValue = isNaN(inputValueNumber) === false ? inputValueNumber : '';
-    props.onInputChange({ uinputId: event.target.id, numberValue: inputValue });
+    const inputValue = charToNumber(event.target.value);
+    props.onInputChange({ uinputId: event.target.id, inputValue: inputValue });
   };
   return (
     <div className="item">
@@ -19,7 +17,6 @@ const MyInput = (props) => {
       </label>
       <input
         id={props.id}
-        key={props.key}
         type="text"
         placeholder={props.placeholder}
         className="input"
@@ -39,7 +36,7 @@ MyInput.propTypes = {
 };
 
 MyInput.defaultProps = {
-  placeholder: PropTypes.string,
+  placeholder: '',
 };
 
 export default MyInput;
