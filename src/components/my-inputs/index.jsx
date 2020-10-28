@@ -7,13 +7,7 @@ const MyInputs = (props) => {
     props.inputsValue2 !== '' && props.inputsValue3 !== '' && props.inputValue1 !== '' ? false : true;
 
   const onAddSumInputsClick = () => {
-    props.addSumAC({
-      arraySum: props.arraySum,
-      inputsValue1: props.inputsValue1,
-      inputsValue2: props.inputsValue2,
-      inputsValue3: props.inputsValue3,
-      counter: props.counter,
-    });
+    props.addSumAC(props.arraySum, props.inputsValue1, props.inputsValue2, props.inputsValue3, props.counter);
   };
   return (
     <div className="myroot__inputblock">

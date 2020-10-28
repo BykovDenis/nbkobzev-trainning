@@ -8,7 +8,7 @@ import { charToNumber } from '../../../helpers/char-to-number';
 const MyInput = (props) => {
   const onInputValueChange = (event) => {
     const inputValue = charToNumber(event.target.value);
-    props.onInputChange({ uinputId: event.target.id, inputValue: inputValue });
+    props.onInputChange(event.target.id, inputValue);
   };
   return (
     <div className="item">

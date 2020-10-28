@@ -1,19 +1,16 @@
 import { ADD_SUM, INPUT_CHANGE } from '../constants';
 
-export const inputChange = (payload) => {
+export const inputChange = (name, value) => {
   return {
     type: INPUT_CHANGE,
-    payload: payload,
+    payload: { name, value },
   };
 };
 
-export const addSumAC = (payload) => ({
+export const addSumAC = (arraySum, inputsValue1, inputsValue2, inputsValue3, counter) => ({
   type: ADD_SUM,
   payload: {
-    arraySum: [
-      ...payload.arraySum,
-      payload.inputsValue1 + payload.inputsValue2 + payload.inputsValue3 + payload.counter,
-    ],
-    counter: payload.counter + 1,
+    arraySum: [...arraySum, inputsValue1 + inputsValue2 + inputsValue3 + counter],
+    counter: counter + 1,
   },
 });

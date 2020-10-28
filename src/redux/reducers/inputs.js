@@ -7,7 +7,7 @@ export default handleActions(
   {
     [INPUT_CHANGE]: (state, action) => ({
       ...state,
-      [action.payload.uinputId]: action.payload.inputValue,
+      [action.payload.name]: action.payload.value,
     }),
     [ADD_SUM]: (state, action) => ({
       ...state,
