@@ -3,7 +3,13 @@ import './index.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function MyInput(props) {
+import { charToNumber } from '../../../helpers/char-to-number';
+
+const MyInput = (props) => {
+  const onInputValueChange = (event) => {
+    const inputValue = charToNumber(event.target.value);
+    props.onInputChange(event.target.id, inputValue);
+  };
   return (
     <div className="item">
       <label htmlFor={props.id} placeholder={props.placeholder} className="label">
@@ -13,14 +19,14 @@ export default function MyInput(props) {
         id={props.id}
         type="text"
         placeholder={props.placeholder}
-        required
         className="input"
         value={props.value}
-        onChange={props.onInputChange}
+        onChange={onInputValueChange}
+        required
       />
     </div>
   );
-}
+};
 
 MyInput.propTypes = {
   id: PropTypes.string.isRequired,
@@ -32,3 +38,5 @@ MyInput.propTypes = {
 MyInput.defaultProps = {
   placeholder: '',
 };
+
+export default MyInput;
