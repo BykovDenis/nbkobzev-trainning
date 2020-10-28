@@ -7,27 +7,23 @@ export default handleActions(
   {
     [INPUT_1]: (state, action) => ({
       ...state,
-      activeButton: action.payload.activeButton,
-      input_1: action.payload.inputValue,
+      input1: action.payload,
     }),
     [INPUT_2]: (state, action) => ({
       ...state,
-      activeButton: action.payload.activeButton,
-      input_2: action.payload.inputValue,
+      input2: action.payload,
     }),
     [INPUT_3]: (state, action) => ({
       ...state,
-      activeButton: action.payload.activeButton,
-      input_3: action.payload.inputValue,
+      input3: action.payload,
     }),
     [ADD_SUM]: (state, action) => ({
       ...state,
       arraySum: action.payload.arraySum,
-      activeButton: true,
-      i: action.payload.i,
-      input_1: '',
-      input_2: '',
-      input_3: '',
+      counter: action.payload.counter,
+      input1: '',
+      input2: '',
+      input3: '',
     }),
   },
   initialState

@@ -2,24 +2,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import MyInputs from '../components/my-inputs';
-import { addSumAC, addValueInput1AC, addValueInput2AC, addValueInput3AC } from '../redux/actions';
+import { addSumAC, inputChange } from '../redux/actions';
+import {
+  getArraySum,
+  getCounter,
+  getInputsValue1,
+  getInputsValue2,
+  getInputsValue3,
+} from '../redux/selectors/selector';
 
 let mapStateToProps = (state) => {
   return {
-    inputsValue1: state.data.input_1,
-    inputsValue2: state.data.input_2,
-    inputsValue3: state.data.input_3,
-    activeButton: state.data.activeButton,
-    arraySum: state.data.arraySum,
-    i: state.data.i,
+    inputsValue1: getInputsValue1(state),
+    inputsValue2: getInputsValue2(state),
+    inputsValue3: getInputsValue3(state),
+    arraySum: getArraySum(state),
+    counter: getCounter(state),
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   const bindActions = {
-    addValueInput1: addValueInput1AC,
-    addValueInput2: addValueInput2AC,
-    addValueInput3: addValueInput3AC,
+    onInputChange: inputChange,
     addSum: addSumAC,
   };
   return bindActionCreators(bindActions, dispatch);
