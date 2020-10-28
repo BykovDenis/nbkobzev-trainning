@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import List from '../components/list';
-import { getArraySum } from '../redux/selectors/selector';
+import { getArraySum } from '../redux/selectors';
 
 let mapStateToProps = (state) => {
   return {
