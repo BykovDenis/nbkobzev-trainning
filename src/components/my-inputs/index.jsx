@@ -7,9 +7,12 @@ const MyInputs = (props) => {
     props.inputsValue2 !== '' && props.inputsValue3 !== '' && props.inputValue1 !== '' ? false : true;
 
   const onAddSumInputsClick = () => {
-    props.addSum({
-      arraySum: [...props.arraySum, props.inputsValue1 + props.inputsValue2 + props.inputsValue3 + props.counter],
-      counter: props.counter + 1,
+    props.addSumAC({
+      arraySum: props.arraySum,
+      inputsValue1: props.inputsValue1,
+      inputsValue2: props.inputsValue2,
+      inputsValue3: props.inputsValue3,
+      counter: props.counter,
     });
   };
   return (
@@ -20,21 +23,21 @@ const MyInputs = (props) => {
           placeholder="input 1"
           label="label 1"
           value={props.inputsValue1}
-          onInputChange={props.onInputChange}
+          onInputChange={props.inputChange}
         />
         <MyInput
           id="input2"
           placeholder="input 2"
           label="label 2"
           value={props.inputsValue2}
-          onInputChange={props.onInputChange}
+          onInputChange={props.inputChange}
         />
         <MyInput
           id="input3"
           placeholder="input 3"
           label="label 3"
           value={props.inputsValue3}
-          onInputChange={props.onInputChange}
+          onInputChange={props.inputChange}
         />
       </div>
       <div>

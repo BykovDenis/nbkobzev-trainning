@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import List from '../components/list';
+import { getArraySum } from '../redux/selectors/selector';
 
 let mapStateToProps = (state) => {
   return {
-    arraySum: state.data.arraySum,
+    arraySum: getArraySum(state),
   };
 };
 

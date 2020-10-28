@@ -3,6 +3,5 @@ export const charToNumber = (value) => {
   const inputValueText = value;
   const validCharsArray = inputValueText.match(REGEXP) || [];
   const inputValueNumber = parseInt(validCharsArray.join(''), 10);
-  const inputValue = isNaN(inputValueNumber) === false ? inputValueNumber : '';
-  return inputValue;
+  return isNaN(inputValueNumber) === false ? inputValueNumber : '';
 };

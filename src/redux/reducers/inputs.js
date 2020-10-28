@@ -1,21 +1,13 @@
 import handleActions from 'redux-actions/lib/handleActions';
 
-import { ADD_SUM, INPUT_1, INPUT_2, INPUT_3 } from '../constants';
+import { ADD_SUM, INPUT_CHANGE } from '../constants';
 import initialState from '../data/inputs';
 
 export default handleActions(
   {
-    [INPUT_1]: (state, action) => ({
+    [INPUT_CHANGE]: (state, action) => ({
       ...state,
-      input1: action.payload,
-    }),
-    [INPUT_2]: (state, action) => ({
-      ...state,
-      input2: action.payload,
-    }),
-    [INPUT_3]: (state, action) => ({
-      ...state,
-      input3: action.payload,
+      [action.payload.uinputId]: action.payload.inputValue,
     }),
     [ADD_SUM]: (state, action) => ({
       ...state,

@@ -3,13 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import MyInputs from '../components/my-inputs';
 import { addSumAC, inputChange } from '../redux/actions';
-import {
-  getArraySum,
-  getCounter,
-  getInputsValue1,
-  getInputsValue2,
-  getInputsValue3,
-} from '../redux/selectors/selector';
+import { getArraySum, getCounter, getInputsValue1, getInputsValue2, getInputsValue3 } from '../redux/selectors';
 
 let mapStateToProps = (state) => {
   return {
@@ -23,8 +17,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   const bindActions = {
-    onInputChange: inputChange,
-    addSum: addSumAC,
+    inputChange,
+    addSumAC,
   };
   return bindActionCreators(bindActions, dispatch);
 };
