@@ -1,0 +1,42 @@
+.titleH1 {
+    color: #ec6e4c;
+    text-align: center;
+    font-family: Arial;
+    font-weight: lighter;
+}
+
+.titleH2 {
+    font-weight: 1;
+    font-family: impact;
+    color: #505050;
+    font-size: 40px;
+}
+
+.temp {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 1;
+    font-family: impact;
+    font-size: 60px;
+    color: #505050;
+}
+
+.span {
+    padding-left: 10px;
+}
+
+.correct {
+    color: #ec6e4c;
+    padding-left: 10px;
+}
+
+.infoData {
+    color: #505050;
+    font-size: 30px;
+}
+
+.description {
+    margin-bottom: 10px;
+}
