@@ -17,17 +17,17 @@ const WidgetHader = (props) => {
       </div>
       <div className="temp">
         <img src={urlIcon} />
-        <text>{props.temp}</text>
+        <h>{props.temp}</h>
         <span className="span">&#176;</span>
-        <text>C</text>
+        <h>C</h>
       </div>
       <div className="infoData">
         <div className="description">
-          <text>{ucFirst(props.description)}</text>
+          <h>{ucFirst(props.description)}</h>
         </div>
         <div>
-          <text>{ucFirst(props.dataTime)}</text>
-          <text className="correct">Wrong data?</text>
+          <h>{ucFirst(props.dataTime)}</h>
+          <h className="correct">Wrong data?</h>
         </div>
       </div>
     </div>
