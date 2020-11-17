@@ -1,19 +1,17 @@
 const initialState = {
-  city: null,
-  icon: null,
-  temp: null,
-  units: null,
-  country: null,
-  description: null,
-  speed: null,
-  pressure: null,
-  humidity: null,
-  sunrise: null,
-  sunset: null,
-  dataTable: [],
-  sort: null,
-  sortKey: null,
-  dataTime: null,
+  location: { city: null, country: null },
+  displayOptions: { unit: null, sort: null, sortKey: null, isFetching: false },
+  dataWeatherWidget: {
+    icon: null,
+    temp: null,
+    description: null,
+    speed: null,
+    pressure: null,
+    humidity: null,
+    sunrise: null,
+    sunset: null,
+    dataTable: [],
+    dataTime: null,
+  },
 };
-
 export default initialState;

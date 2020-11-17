@@ -1,27 +1,26 @@
+import './index.css';
+
 import React from 'react';
 
 const WidgetTable = (props) => {
-  let onSort = (e) => {
-    props.onSort(e.currentTarget.id);
+  const onSortClick = (evt) => {
+    props.onSortClick(evt.currentTarget.id);
   };
   return (
-    <table
-      className="table table-striped table-bordered"
-      style={{ cursor: 'pointer', color: '#505050', fontSize: '20px' }}
-    >
+    <table className="table table-striped table-bordered WidgetTable">
       <thead>
         <tr>
-          <th id="parameter" onClick={onSort}>
+          <th id="parameter" onClick={onSortClick}>
             Parameters{' '}
           </th>
-          <th id="value" onClick={onSort}>
+          <th id="value" onClick={onSortClick}>
             Values{' '}
           </th>
         </tr>
       </thead>
       <tbody>
-        {props.dataTable.map((item) => (
-          <tr>
+        {props.dataTable.map((item, index) => (
+          <tr key={index}>
             <td>{item.parameter}</td>
             <td>{item.value}</td>
           </tr>
