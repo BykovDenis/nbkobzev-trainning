@@ -1,4 +1,4 @@
-.hader {
+.header {
     font-family: "PT Sans Narrow", "Tahoma", sans-serif;
 }
 
@@ -45,6 +45,7 @@
 
 .unit {
     color: #505050;
+    cursor: pointer;
 }
 
 .unit:hover {

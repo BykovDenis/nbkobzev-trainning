@@ -1,24 +1,33 @@
 import handleActions from 'redux-actions/lib/handleActions';
 
-import { ON_DATA_TABLE_SORT, SET_WIDGET_DATA, TOGGLE_IS_FETHING } from '../constants';
-import initialState from '../data/widget';
+import {
+  GET_WIDGET_DATA_ERROR,
+  GET_WIDGET_DATA_LOADING,
+  GET_WIDGET_DATA_SUCCESS,
+  ON_DATA_TABLE_SORT,
+} from '../constants';
+import initialState from '../data/weather-widget';
 
 export default handleActions(
   {
-    [SET_WIDGET_DATA]: (state, action) => ({
-      ...state,
-      dataWeatherWidget: { ...state.dataWeatherWidget, ...action.payload.dataWeatherWidget },
-      displayOptions: { ...state.displayOptions, ...action.payload.displayOptions },
-      location: { ...state.location, ...action.payload.location },
-    }),
     [ON_DATA_TABLE_SORT]: (state, action) => ({
       ...state,
       dataWeatherWidget: { ...state.dataWeatherWidget, ...action.payload.dataWeatherWidget },
       displayOptions: { ...state.displayOptions, ...action.payload.displayOptions },
     }),
-    [TOGGLE_IS_FETHING]: (state, action) => ({
+    [GET_WIDGET_DATA_LOADING]: (state, action) => ({
       ...state,
-      displayOptions: { ...state.displayOptions, ...action.payload.displayOptions },
+      displayOptions: { ...state.displayOptions, isFetching: true },
+    }),
+    [GET_WIDGET_DATA_SUCCESS]: (state, action) => ({
+      ...state,
+      dataWeatherWidget: { ...state.dataWeatherWidget, ...action.payload.dataWeatherWidget },
+      displayOptions: { ...state.displayOptions, ...action.payload.displayOptions, isFetching: false },
+      location: { ...state.location, ...action.payload.location },
+    }),
+    [GET_WIDGET_DATA_ERROR]: (state, action) => ({
+      ...state,
+      displayOptions: { ...state.displayOptions, isFetching: false },
     }),
   },
   initialState

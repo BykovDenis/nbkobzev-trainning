@@ -15,3 +15,6 @@ export const getDescription = (state) => state.widgetData.dataWeatherWidget.desc
 export const getDataTime = (state) => state.widgetData.dataWeatherWidget.dataTime;
 export const getUnit = (state) => state.widgetData.displayOptions.unit;
 export const getIsFetching = (state) => state.widgetData.displayOptions.isFetching;
+export const getIdCity = (state) => state.widgetData.config.idCity;
+export const getAppId = (state) => state.widgetData.config.appId;
+export const getTempUnit = (state) => state.widgetData.displayOptions.tempUnit;
