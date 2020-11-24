@@ -17,7 +17,7 @@ const middlewares = [
   }),
 ];
 
-const keyReduxDevTool = 'REDUX_DEVTOOLS_EXTENSION';
+const keyReduxDevTool = '__REDUX_DEVTOOLS_EXTENSION__';
 const reduxDevTool = window[keyReduxDevTool];
 const devTools = reduxDevTool ? reduxDevTool() : (f) => f;
 
