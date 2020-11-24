@@ -1,10 +1,9 @@
 import './index.css';
 
-import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faSortAlphaDownAlt, faSortAlphaUpAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 
 const WidgetTable = (props) => {
   const onSortClick = (evt) => {
@@ -15,25 +14,23 @@ const WidgetTable = (props) => {
       <thead>
         <tr>
           <th id="parameter" onClick={onSortClick}>
-            Parameters{' '}
+            <span>Parameters</span>
             {props.sortKey === 'parameter' ? (
-              props.sort === 'asc' ? (
-                <FontAwesomeIcon icon={faSortDown} />
-              ) : (
-                <FontAwesomeIcon icon={faSortUp} />
-              )
+              <FontAwesomeIcon
+                className="sort-alpha"
+                icon={props.sort === 'asc' ? faSortAlphaDownAlt : faSortAlphaUpAlt}
+              />
             ) : (
               ''
             )}
           </th>
           <th id="value" onClick={onSortClick}>
-            Values{' '}
+            <span>Values</span>
             {props.sortKey === 'value' ? (
-              props.sort === 'asc' ? (
-                <FontAwesomeIcon icon={faSortDown} />
-              ) : (
-                <FontAwesomeIcon icon={faSortUp} />
-              )
+              <FontAwesomeIcon
+                className="sort-alpha "
+                icon={props.sort === 'asc' ? faSortAlphaDownAlt : faSortAlphaUpAlt}
+              />
             ) : (
               ''
             )}

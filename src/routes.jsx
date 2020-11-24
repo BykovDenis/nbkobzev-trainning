@@ -10,7 +10,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <App>
-        <Route exact path="/" component={MyInputsContainer} />
+        <Route exact path="/" component={WeatherWidget} />
         <Route path="/inputs" component={MyInputsContainer} />
         <Route path="/list" component={MyListContainer} />
         <Route path="/weather" component={WeatherWidget} />

@@ -1,19 +1,29 @@
 const weatherWidget = {
   location: { city: '', country: '' },
-  displayOptions: { unit: null, sort: null, sortKey: null, isFetching: false, tempUnit: null },
-  dataWeatherWidget: {
-    icon: null,
-    temp: null,
-    description: null,
-    speed: null,
-    pressure: null,
-    humidity: null,
-    sunrise: null,
-    sunset: null,
-    dataTable: [],
-    dataTime: null,
+  displayOptions: {
+    unit: '',
+    sort: '',
+    sortElemets: ['asc', 'desc'],
+    sortKey: '',
+    isFetching: false,
+    tempUnit: '',
+    errorLoadingWidgetData: false,
+    textError: '',
   },
-  config: { idCity: 524901, appId: 'd04912cef389db95d18b7df8073b26df' },
+  dataWeatherWidget: {
+    icon: '',
+    temp: null,
+    description: '',
+    speed: '',
+    pressure: '',
+    humidity: '',
+    sunrise: '',
+    sunset: '',
+    dataTable: [],
+    dataTime: '',
+  },
+  idCity: 524901,
+  appId: 'd04912cef389db95d18b7df8073b26df',
 };
 
 export default weatherWidget;

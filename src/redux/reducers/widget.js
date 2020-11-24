@@ -22,12 +22,23 @@ export default handleActions(
     [GET_WIDGET_DATA_SUCCESS]: (state, action) => ({
       ...state,
       dataWeatherWidget: { ...state.dataWeatherWidget, ...action.payload.dataWeatherWidget },
-      displayOptions: { ...state.displayOptions, ...action.payload.displayOptions, isFetching: false },
+      displayOptions: {
+        ...state.displayOptions,
+        ...action.payload.displayOptions,
+        isFetching: false,
+        errorLoadingWidgetData: false,
+        textError: '',
+      },
       location: { ...state.location, ...action.payload.location },
     }),
     [GET_WIDGET_DATA_ERROR]: (state, action) => ({
       ...state,
-      displayOptions: { ...state.displayOptions, isFetching: false },
+      displayOptions: {
+        ...state.displayOptions,
+        isFetching: false,
+        errorLoadingWidgetData: true,
+        textError: action.payload,
+      },
     }),
   },
   initialState

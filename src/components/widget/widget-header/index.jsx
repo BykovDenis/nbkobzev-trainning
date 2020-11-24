@@ -6,10 +6,10 @@ import React from 'react';
 
 import changeFirstCharUp from '../../../helpers/change-first-char-up';
 
-const WidgetHader = (props) => {
+const WidgetHeader = (props) => {
   let urlIcon2x = `http://openweathermap.org/img/wn/${props.icon}@2x.png`;
   let urlIcon1x = `http://openweathermap.org/img/wn/${props.icon}.png`;
-  let urlIcon = `${urlIcon1x} 50w, ${urlIcon2x} 100w`;
+  let description = changeFirstCharUp(props.description);
   return (
     <div className="header">
       <div>
@@ -19,11 +19,7 @@ const WidgetHader = (props) => {
         </h2>
       </div>
       <div className="temp">
-        {props.icon !== null ? (
-          <img srcSet={urlIcon} sizes="(max-width: 50px) 50px, 100px" src={urlIcon2x} alt="icon" />
-        ) : (
-          ''
-        )}
+        {props.icon !== '' ? <img className="icon" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
         <p>{props.temp}</p>
         <span className="span">&#176;</span>
         <p className="unit" onClick={props.onUnitClick}>
@@ -32,7 +28,7 @@ const WidgetHader = (props) => {
       </div>
       <div className="infoData">
         <div className="description">
-          <p>{changeFirstCharUp(props.description)}</p>
+          <p>{description}</p>
         </div>
         <div className="temp">
           <h3>{props.dataTime}</h3>
@@ -43,15 +39,15 @@ const WidgetHader = (props) => {
   );
 };
 
-WidgetHader.propTypes = {
-  icon: PropTypes.string,
-  city: PropTypes.string,
-  country: PropTypes.string,
-  temp: PropTypes.number,
+WidgetHeader.propTypes = {
+  icon: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
   onUnitClick: PropTypes.func.isRequired,
-  unit: PropTypes.string,
-  description: PropTypes.string,
-  dataTime: PropTypes.string,
+  unit: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  dataTime: PropTypes.string.isRequired,
 };
 
-export default WidgetHader;
+export default WidgetHeader;

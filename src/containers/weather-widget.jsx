@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import ErrorComponent from '../components/error';
 import Preloader from '../components/preloader';
-import WidgetHeader from '../components/widget/header';
-import WidgetTable from '../components/widget/widget-table';
+import WeatherWidget from '../components/widget/weather-widget';
 import { onSort, setWidgetData } from '../redux/actions';
 import {
   getAppId,
@@ -13,13 +13,16 @@ import {
   getDataTable,
   getDataTime,
   getDescription,
+  getErrorLoadingWidgetData,
   getIcon,
   getIdCity,
   getIsFetching,
   getSort,
+  getSortElemets,
   getSortKey,
   getTemp,
   getTempUnit,
+  getTextError,
   getUnit,
 } from '../redux/selectors';
 
@@ -28,7 +31,7 @@ class WidgetContainer extends React.Component {
     this.props.setWidgetData(this.props.unit, this.props.idCity, this.props.appId);
   }
   onSortClick = (id) => {
-    this.props.onSort(id, this.props.dataTable, this.props.sort, this.props.sortKey);
+    this.props.onSort(id, this.props.dataTable, this.props.sort, this.props.sortKey, this.props.sortElemets);
   };
   onUnitClick = () => {
     this.props.setWidgetData(this.props.unit, this.props.idCity, this.props.appId);
@@ -38,25 +41,23 @@ class WidgetContainer extends React.Component {
       <div>
         {this.props.isFetching ? (
           <Preloader />
+        ) : !this.props.errorLoadingWidgetData ? (
+          <WeatherWidget
+            icon={this.props.icon}
+            city={this.props.city}
+            country={this.props.country}
+            temp={this.props.temp}
+            description={this.props.description}
+            dataTime={this.props.dataTime}
+            unit={this.props.tempUnit}
+            onUnitClick={this.onUnitClick}
+            dataTable={this.props.dataTable}
+            onSortClick={this.onSortClick}
+            sort={this.props.sort}
+            sortKey={this.props.sortKey}
+          />
         ) : (
-          <div>
-            <WidgetHeader
-              icon={this.props.icon}
-              city={this.props.city}
-              country={this.props.country}
-              temp={this.props.temp}
-              description={this.props.description}
-              dataTime={this.props.dataTime}
-              unit={this.props.tempUnit}
-              onUnitClick={this.onUnitClick}
-            />
-            <WidgetTable
-              dataTable={this.props.dataTable}
-              onSortClick={this.onSortClick}
-              sort={this.props.sort}
-              sortKey={this.props.sortKey}
-            />
-          </div>
+          <ErrorComponent textError={this.props.textError} />
         )}
       </div>
     );
@@ -79,6 +80,9 @@ let mapStateToProps = (state) => {
     idCity: getIdCity(state),
     appId: getAppId(state),
     tempUnit: getTempUnit(state),
+    errorLoadingWidgetData: getErrorLoadingWidgetData(state),
+    textError: getTextError(state),
+    sortElemets: getSortElemets(state),
   };
 };
 

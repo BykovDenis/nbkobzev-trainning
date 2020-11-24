@@ -23,8 +23,9 @@ export const setWidgetData = (unit, idCity, appId) => ({
   payload: getWeatherInformation(unit, idCity, appId),
 });
 
-export const onSort = (id, dataTable, sort, sortKey) => {
-  let { dataTableNew, sortNew } = sortArray(id, dataTable, sort, sortKey);
+export const onSort = (id, dataTable, sort, sortKey, sortElemets) => {
+  let sortNew = id === sortKey ? sortElemets.filter((word) => word !== sort)[0] : 'asc';
+  let dataTableNew = sortArray(id, dataTable, sortNew);
   return {
     type: ON_DATA_TABLE_SORT,
     payload: { dataWeatherWidget: { dataTable: dataTableNew }, displayOptions: { sort: sortNew, sortKey: id } },
@@ -32,12 +33,15 @@ export const onSort = (id, dataTable, sort, sortKey) => {
 };
 
 const getWeatherInformation = (unit, idCity, appId) => {
-  return new Promise(function (resolve) {
+  return new Promise((resolve, reject) => {
     let unitNew = unit === 'metric' ? 'imperial' : 'metric';
     let tempUnit = unitNew === 'metric' ? 'C' : 'F';
-    weatherAPI.getWeatherInformation(unitNew, idCity, appId).then((response) => {
-      let weatherData = weatherDataMapped(response.data, unitNew, tempUnit);
-      resolve(weatherData);
-    });
+    weatherAPI
+      .getWeatherInformation(unitNew, idCity, appId)
+      .then((response) => {
+        let weatherData = weatherDataMapped(response.data, unitNew, tempUnit);
+        resolve(weatherData);
+      })
+      .catch((e) => reject(`Error ${e.code} ${e.message}`));
   });
 };
