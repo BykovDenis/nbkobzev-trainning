@@ -17,9 +17,10 @@ const middlewares = [
   }),
 ];
 
-let store = createStore(
-  reducers,
-  compose(applyMiddleware(...middlewares), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-);
+const keyReduxDevTool = 'REDUX_DEVTOOLS_EXTENSION';
+const reduxDevTool = window[keyReduxDevTool];
+const devTools = reduxDevTool ? reduxDevTool() : (f) => f;
+
+let store = createStore(reducers, compose(applyMiddleware(...middlewares), devTools));
 
 export default store;
