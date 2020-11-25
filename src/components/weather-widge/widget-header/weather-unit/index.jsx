@@ -14,14 +14,14 @@ const AntSwitch = withStyles((theme) => ({
   },
   switchBase: {
     padding: 2,
-    color: theme.palette.grey[500],
+    color: theme.palette.common.white,
     '&$checked': {
       transform: 'translateX(64px)',
       color: theme.palette.common.white,
       '& + $track': {
         opacity: 1,
-        backgroundColor: theme.palette.primary.main,
-        borderColor: theme.palette.primary.main,
+        backgroundColor: '#ec6e4c',
+        borderColor: '#ec6e4c',
       },
     },
   },
@@ -34,7 +34,7 @@ const AntSwitch = withStyles((theme) => ({
     border: `1px solid ${theme.palette.grey[500]}`,
     borderRadius: 16 / 3,
     opacity: 1,
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: '#ec6e4c',
   },
   checked: {},
 }))(Switch);
@@ -42,6 +42,8 @@ const AntSwitch = withStyles((theme) => ({
 class CustomizedSwitches extends React.Component {
   state = {
     checkedC: this.props.unit === 'C' ? true : false,
+    colorF: this.props.unit === 'C' ? 'switch-grid-inactive' : 'switch-grid-active',
+    colorC: this.props.unit === 'C' ? 'switch-grid-active' : 'switch-grid-inactive',
   };
 
   handleChange = () => {
@@ -53,13 +55,13 @@ class CustomizedSwitches extends React.Component {
       <FormGroup>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
-            <Grid item className="switch-grid">
+            <Grid item className={this.state.colorF}>
               F
             </Grid>
             <Grid item>
               <AntSwitch checked={this.state.checkedC} onChange={this.handleChange} name="checkedC" />
             </Grid>
-            <Grid item className="switch-grid">
+            <Grid item className={this.state.colorC}>
               C
             </Grid>
           </Grid>

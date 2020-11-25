@@ -67,8 +67,14 @@
     margin-left: 50px;
 }
 
-.switch-grid {
+.switch-grid-active {
     font-weight: 900;
     font-size: 60px;
     color: #ec6e4c;
+}
+
+.switch-grid-inactive {
+    font-weight: 900;
+    font-size: 60px;
+    color: #b7b7b7;
 }
