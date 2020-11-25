@@ -20,7 +20,7 @@ const WidgetHeader = (props) => {
         </h2>
       </div>
       <div className="temp">
-        {props.icon !== '' ? <img className="icon" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
+        {props.icon !== '' ? <img width="100" height="100" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
         <div>{props.temp} </div>
         <span className="span">&#176;</span>
         <div className="unit" onClick={props.onUnitClick}>
