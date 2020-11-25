@@ -8,7 +8,7 @@ import changeFirstCharUp from '../../../helpers/change-first-char-up';
 import CustomizedSwitches from './weather-unit';
 
 const WidgetHeader = (props) => {
-  let urlIcon2x = `http://openweathermap.org/img/wn/${props.icon}@2x.png`;
+  let urlIcon2x = `http://openweathermap.org/img/wn/${props.icon}@2x.png 2x`;
   let urlIcon1x = `http://openweathermap.org/img/wn/${props.icon}.png`;
   let description = changeFirstCharUp(props.description);
   return (
@@ -19,16 +19,16 @@ const WidgetHeader = (props) => {
           Weather in {props.city}, {props.country}
         </h2>
       </div>
-      <div className="temp">
-        {props.icon !== '' ? <img width="100" height="100" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
-        <div>{props.temp} </div>
-        <span className="span">&#176;</span>
-        <div className="unit" onClick={props.onUnitClick}>
-          {props.unit}
+      <div className="display-info">
+        <div className="temp">
+          {props.icon !== '' ? <img width="100" height="100" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
+          <div>{props.temp} </div>
+          <span className="span">&#176;</span>
+          <div className="unit" onClick={props.onUnitClick}>
+            {props.unit}
+          </div>
         </div>
-        <div className="switch">
-          <CustomizedSwitches onUnitClick={props.onUnitClick} unit={props.unit} />
-        </div>
+        <CustomizedSwitches onUnitClick={props.onUnitClick} unit={props.unit} />
       </div>
       <div className="infoData">
         <div className="description">
