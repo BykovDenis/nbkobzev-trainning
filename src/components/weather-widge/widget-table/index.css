@@ -1,0 +1,11 @@
+.widget-table {
+    cursor: pointer;
+    color: #505050;
+    font-size: 20px;
+}
+
+.sort-alpha {
+    float: right;
+    display: table-cell;
+    vertical-align: middle;
+}

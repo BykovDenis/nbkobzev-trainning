@@ -1,11 +1,26 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import promiseMiddleware from 'redux-promise-middleware';
+import thunkMiddleware from 'redux-thunk';
 
 import inputsReducer from './reducers/inputs';
+import widgetReducer from './reducers/widget';
 
 let reducers = combineReducers({
   data: inputsReducer,
+  widgetData: widgetReducer,
 });
 
-let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const middlewares = [
+  thunkMiddleware,
+  promiseMiddleware({
+    promiseTypeSuffixes: ['LOADING', 'SUCCESS', 'ERROR'],
+  }),
+];
+
+const keyReduxDevTool = '__REDUX_DEVTOOLS_EXTENSION__';
+const reduxDevTool = window[keyReduxDevTool];
+const devTools = reduxDevTool ? reduxDevTool() : (f) => f;
+
+let store = createStore(reducers, compose(applyMiddleware(...middlewares), devTools));
 
 export default store;

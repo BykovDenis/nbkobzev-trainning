@@ -12,6 +12,9 @@ const Navbar = () => {
       <div className="navbar_item">
         <NavLink to="/list">List of sum</NavLink>
       </div>
+      <div className="navbar_item">
+        <NavLink to="/weather">Widget</NavLink>
+      </div>
     </nav>
   );
 };
