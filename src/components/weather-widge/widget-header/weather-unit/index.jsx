@@ -44,18 +44,10 @@ class CustomizedSwitches extends React.Component {
     checkedC: this.props.unit === 'C' ? true : false,
   };
 
-  handleChange = (event) => {
-    this.setState({ checkedC: event.target.checked });
+  handleChange = () => {
     this.props.onUnitClick();
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.unit !== this.props.unit) {
-      this.setState({
-        status: this.props.unit === 'metric' ? true : false,
-      });
-    }
-  }
   render() {
     return (
       <FormGroup>
