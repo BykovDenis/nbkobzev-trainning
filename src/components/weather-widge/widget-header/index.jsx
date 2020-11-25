@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import changeFirstCharUp from '../../../helpers/change-first-char-up';
+import CustomizedSwitches from './weather-unit';
 
 const WidgetHeader = (props) => {
   let urlIcon2x = `http://openweathermap.org/img/wn/${props.icon}@2x.png`;
@@ -20,11 +21,14 @@ const WidgetHeader = (props) => {
       </div>
       <div className="temp">
         {props.icon !== '' ? <img className="icon" srcSet={urlIcon2x} src={urlIcon1x} alt="icon" /> : ''}
-        <p>{props.temp}</p>
+        <div>{props.temp} </div>
         <span className="span">&#176;</span>
-        <p className="unit" onClick={props.onUnitClick}>
+        <div className="unit" onClick={props.onUnitClick}>
           {props.unit}
-        </p>
+        </div>
+        <div className="switch">
+          <CustomizedSwitches onUnitClick={props.onUnitClick} unit={props.unit} />
+        </div>
       </div>
       <div className="infoData">
         <div className="description">

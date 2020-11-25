@@ -2,8 +2,8 @@ import './index.css';
 
 import React from 'react';
 
-import WidgetHeader from '../widget-header';
-import WidgetTable from '../widget-table';
+import WidgetHeader from './widget-header';
+import WidgetTable from './widget-table';
 
 const WeatherWidget = (props) => {
   return (

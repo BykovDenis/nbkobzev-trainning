@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import ErrorComponent from '../components/error';
 import Preloader from '../components/preloader';
-import WeatherWidget from '../components/widget/weather-widget';
+import WeatherWidget from '../components/weather-widge';
 import { onSort, setWidgetData } from '../redux/actions';
 import {
   getAppId,

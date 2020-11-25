@@ -1,3 +1,9 @@
 export default function changeFirstCharUp(str) {
-  return str === null ? null : str.charAt(0).toUpperCase() + str.slice(1);
+  if (str.length >= 2) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  } else if (str === null) {
+    return null;
+  } else {
+    return str.charAt(0).toUpperCase();
+  }
 }

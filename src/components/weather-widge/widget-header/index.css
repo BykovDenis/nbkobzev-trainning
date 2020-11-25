@@ -56,3 +56,13 @@
     width: 100px;
     height: 100px
 }
+
+.switch {
+    margin-left: 50px;
+}
+
+.switch-grid {
+    font-weight: 900;
+    font-size: 60px;
+    color: #ec6e4c;
+}

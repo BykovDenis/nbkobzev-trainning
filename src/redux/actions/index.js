@@ -24,7 +24,7 @@ export const setWidgetData = (unit, idCity, appId) => ({
 });
 
 export const onSort = (id, dataTable, sort, sortKey, sortElemets) => {
-  let sortNew = id === sortKey ? sortElemets.filter((word) => word !== sort)[0] : 'asc';
+  let sortNew = id === sortKey ? sortElemets.find((word) => word !== sort) : 'asc';
   let dataTableNew = sortArray(id, dataTable, sortNew);
   return {
     type: ON_DATA_TABLE_SORT,
