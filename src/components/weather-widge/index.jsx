@@ -1,13 +1,22 @@
-import './index.css';
-
+import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 import WidgetHeader from './widget-header';
 import WidgetTable from './widget-table';
 
+const styles = {
+  weatherWidget: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: '800px',
+  },
+};
+
 const WeatherWidget = (props) => {
+  const { classes } = props;
   return (
-    <div className="weather-widget">
+    <div className={classes.weatherWidget}>
       <WidgetHeader
         icon={props.icon}
         city={props.city}
@@ -28,4 +37,4 @@ const WeatherWidget = (props) => {
   );
 };
 
-export default WeatherWidget;
+export default withStyles(styles)(WeatherWidget);

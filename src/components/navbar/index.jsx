@@ -1,22 +1,38 @@
-import './index.css';
-
+import { AppBar, Container, Toolbar } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const styles = () => ({
+  appBar: {
+    backgroundColor: 'rgba(255, 255, 100, 0.5)',
+    outline: '1px solid rgba(100, 255, 100, .5)',
+    marginTop: '5px',
+  },
+  containerNavLink: {
+    textAlign: 'center',
+  },
+});
+
+const Navbar = (props) => {
+  const { classes } = props;
   return (
-    <nav className="navbar">
-      <div className="navbar_item">
-        <NavLink to="/inputs">Inputs</NavLink>
-      </div>
-      <div className="navbar_item">
-        <NavLink to="/list">List of sum</NavLink>
-      </div>
-      <div className="navbar_item">
-        <NavLink to="/weather">Widget</NavLink>
-      </div>
-    </nav>
+    <AppBar position="static" color="inherit" className={classes.appBar}>
+      <Container>
+        <Toolbar display="flex">
+          <Container className={classes.containerNavLink}>
+            <NavLink to="/inputs">Inputs</NavLink>
+          </Container>
+          <Container className={classes.containerNavLink}>
+            <NavLink to="/list">List of sum</NavLink>
+          </Container>
+          <Container className={classes.containerNavLink}>
+            <NavLink to="/weather">Widget</NavLink>
+          </Container>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 
-export default Navbar;
+export default withStyles(styles)(Navbar);
