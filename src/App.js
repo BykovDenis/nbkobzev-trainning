@@ -1,5 +1,3 @@
-import './App.css';
-
 import React, { Component } from 'react';
 
 import Navbar from './components/navbar/index';
@@ -9,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        {this.props.children}
+        <main>{this.props.children}</main>
       </div>
     );
   }

@@ -1,28 +1,53 @@
-import './index.css';
-
+import { TextField } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { charToNumber } from '../../../helpers/char-to-number';
 
+const styles = () => ({
+  inputLabel: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    alignContent: 'center',
+    flexGrow: 2,
+    margin: '5px',
+    width: 'calc(100% / 2 - 10px)',
+  },
+  label: {
+    width: '65px',
+    font: '20px sans-serif',
+    '& label': {
+      marginBottom: '0px',
+    },
+  },
+  input: {
+    width: 'calc(100% - 65px)',
+    fontSize: '20px',
+  },
+});
+
 const MyInput = (props) => {
+  const { classes } = props;
   const onInputValueChange = (event) => {
     const inputValue = charToNumber(event.target.value);
     props.onInputChange(event.target.id, inputValue);
   };
   return (
-    <div className="item">
-      <label htmlFor={props.id} placeholder={props.placeholder} className="label">
-        {props.label}
-      </label>
-      <input
+    <div className={classes.inputLabel}>
+      <div className={classes.label}>
+        <label htmlFor={props.id} placeholder={props.placeholder}>
+          {props.label}
+        </label>
+      </div>
+      <TextField
         id={props.id}
+        label={props.placeholder}
         type="text"
-        placeholder={props.placeholder}
-        className="input"
         value={props.value}
         onChange={onInputValueChange}
-        required
+        className={classes.input}
       />
     </div>
   );
@@ -39,4 +64,4 @@ MyInput.defaultProps = {
   placeholder: '',
 };
 
-export default MyInput;
+export default withStyles(styles)(MyInput);

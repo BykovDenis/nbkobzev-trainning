@@ -42,8 +42,8 @@ const AntSwitch = withStyles((theme) => ({
 class CustomizedSwitches extends React.Component {
   state = {
     checkedC: this.props.unit === 'C' ? true : false,
-    colorF: this.props.unit === 'C' ? 'switch-grid-inactive' : 'switch-grid-active',
-    colorC: this.props.unit === 'C' ? 'switch-grid-active' : 'switch-grid-inactive',
+    colorF: this.props.unit === 'C' ? this.props.switchGridInactive : this.props.switchGridActive,
+    colorC: this.props.unit === 'C' ? this.props.switchGridActive : this.props.switchGridInactive,
   };
 
   handleChange = () => {

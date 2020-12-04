@@ -1,8 +1,38 @@
+import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 import MyInput from './my-input';
 
+const styles = () => ({
+  inputBlock: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 100, 0.5)',
+    outline: '1px solid rgba(100, 255, 100, .5)',
+    marginTop: '5px',
+    marginRight: '5px',
+    marginLeft: '5px',
+  },
+  inputItems: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '800px',
+    paddingLeft: '0',
+  },
+  btn: {
+    width: '75px',
+    height: '35px',
+    marginBottom: '10px',
+  },
+});
+
 const MyInputs = (props) => {
+  const { classes } = props;
   const isActiveButton =
     props.inputsValue2 !== '' && props.inputsValue3 !== '' && props.inputValue1 !== '' ? false : true;
 
@@ -10,8 +40,8 @@ const MyInputs = (props) => {
     props.addSumAC(props.arraySum, props.inputsValue1, props.inputsValue2, props.inputsValue3, props.counter);
   };
   return (
-    <div className="myroot__inputblock">
-      <div className="myroot__items">
+    <div className={classes.inputBlock}>
+      <div className={classes.inputItems}>
         <MyInput
           id="input1"
           placeholder="input 1"
@@ -35,19 +65,20 @@ const MyInputs = (props) => {
         />
       </div>
       <div>
-        <button
+        <Button
+          variant="contained"
           type="submit"
           value="Send"
           id="btn1"
           disabled={isActiveButton}
-          className="btn"
+          className={classes.btn}
           onClick={onAddSumInputsClick}
         >
           Send
-        </button>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default MyInputs;
+export default withStyles(styles)(MyInputs);
