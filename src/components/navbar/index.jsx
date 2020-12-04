@@ -19,7 +19,7 @@ const Navbar = (props) => {
   return (
     <AppBar position="static" color="inherit" className={classes.appBar}>
       <Container>
-        <Toolbar display="flex" justifyContent="center" alignItems="center">
+        <Toolbar display="flex">
           <Container className={classes.containerNavLink}>
             <NavLink to="/inputs">Inputs</NavLink>
           </Container>
